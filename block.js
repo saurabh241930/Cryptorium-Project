@@ -14,6 +14,10 @@ class Block{
     Data:${this.data}
 `
   }
+
+  static genesis(){
+    return new this("genesis time","----","fh8sih8eshhfud87su",[])
+  }
   
 }
 
@@ -55,24 +59,35 @@ module.exports = Block
 //     this.data = data;
 //   }
 
-//   _createClass(Block, [
-//     {
-//       key: "toString",
-//       value: function toString() {
-//         return (
-//           "Block-\n    Timestammp:" +
-//           this.timestamp +
-//           "\n    LastHash:" +
-//           this.lastHash.subString(0, 10) +
-//           "\n    Hash:" +
-//           this.hash.subString(0, 10) +
-//           "\n    Data:" +
-//           this.data +
-//           "\n"
-//         );
+//   _createClass(
+//     Block,
+//     [
+//       {
+//         key: "toString",
+//         value: function toString() {
+//           return (
+//             "Block-\n    Timestammp:" +
+//             this.timestamp +
+//             "\n    LastHash:" +
+//             this.lastHash +
+//             "\n    Hash:" +
+//             this.hash +
+//             "\n    Data:" +
+//             this.data +
+//             "\n"
+//           );
+//         }
 //       }
-//     }
-//   ]);
+//     ],
+//     [
+//       {
+//         key: "genesis",
+//         value: function genesis() {
+//           return new this("genesis time", "----", "fh8sih8eshhfud87su", []);
+//         }
+//       }
+//     ]
+//   );
 
 //   return Block;
 // })();
