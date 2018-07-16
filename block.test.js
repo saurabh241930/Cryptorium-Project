@@ -25,10 +25,11 @@ const Blockchain = require('./blockchain')
 
 describe("Blockchain",()=>{
    
-    let blockchain;
+    let blockchain,blockchain2;
 
 beforeEach(() => {
-  blockchain = new Blockchain()
+  blockchain = new Blockchain();
+  blockchain2 = new Blockchain();
 })
 
 
@@ -40,9 +41,23 @@ beforeEach(() => {
 
         const data = "foo"
         blockchain.addBlock(data)
-
-
         expect(blockchain.chain[blockchain.chain.length-1].data).toEqual(data)
     })
+
+    it("validates a chain",()=>{
+      blockchain2.addBlock("foo")
+      expect(blockchain.isValidChain(blockchain2.chain)).toBe(true)
+    })
+
+    it("invalidates a chain with a corrupt genesis block",()=>{
+        blockchain2.chain[0].data = "Bad data"
+        expect(blockchain.isValidChain(blockchain2.chain)).toBe(false)
+      })
+
+      it("validates a chain",()=>{
+        blockchain2.addBlock("foo")
+        blockchain2.chain[1].data = "Not foo"
+        expect(blockchain.isValidChain(blockchain2.chain)).toBe(true)
+      })
 })
 
